@@ -1,15 +1,78 @@
 {% load static %}
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{{ category.name }} | Keshmiri Rugs</title><link rel="stylesheet" href="{% static 'assets/style.css' %}"></head><body><div class="topline"><span>✦ Authentic Persian Rugs &nbsp; ✦ Handwoven Heritage &nbsp; ✦ Timeless Beauty</span><span>WhatsApp: +98 912 869 2978</span></div>
-<header class="nav"><a class="logo" href="{% url 'home' %}"><div class="mark"><span>K</span></div><div class="logo-text">Keshmiri<br>Rugs<small>AUTHENTIC PERSIAN COLLECTIONS</small></div></a><nav class="menu"><a href="{% url 'home' %}">Home</a><a href="{% url 'categories' %}">Categories</a><a href="{% url 'home' %}#why">Why Us</a><a href="{% url 'home' %}#contact">Contact</a></nav><button class="whatsapp-top" data-wa data-category="{{ category.name }}">WhatsApp</button></header><section class="page-hero"><div class="page-hero-inner"><div class="breadcrumb"><a href="{% url 'home' %}">Home</a> / <a href="{% url 'categories' %}">Categories</a></div><h1>{{ category.name }}</h1><p>{{ category.description }}</p></div></section><main class="cat-content"><div class="cat-layout"><div class="cat-photo">
-  {% if category.image %}
-    <img src="{{ category.image.url }}" alt="{{ category.name }}">
-  {% else %}
-    <img src="{% static 'assets/rug-main.jpg' %}" alt="{{ category.name }}">
-  {% endif %}
-</div><div><section class="story"><h2>About {{ category.name }}</h2><p>{{ category.description }}</p><div class="info-columns"><div class="mini"><h3>Design Character</h3><ul>
-  {% for feature in category.design_character_list %}
-    <li>{{ feature }}</li>
-  {% empty %}
-    <li>Authentic Persian craftsmanship</li>
-  {% endfor %}
-</ul></div><div class="mini"><h3>Why Choose It?</h3><p style="line-height:1.8;color:#55483f">{{ category.why_choose|default:"A beautiful choice for collectors, interior designers and homeowners looking for authentic craftsmanship, visual warmth and cultural identity." }}</p></div></div></section><section class="cat-cta"><div><h2>Interested in {{ category.name }}?</h2><p>If you want to see more or purchase from this category, contact us on WhatsApp.</p></div><button class="btn green" data-wa data-category="{{ category.name }}">Contact on WhatsApp</button></section></div></div></main><footer class="footer" id="contact"><div><div class="logo"><div class="mark"><span>K</span></div><div class="logo-text">Keshmiri<br>Rugs<small>AUTHENTIC PERSIAN COLLECTIONS</small></div></div><p>Timeless. Authentic. Handwoven.</p></div><div><h4>Quick Links</h4><a href="{% url 'home' %}">Home</a><a href="{% url 'categories' %}">Categories</a><a href="{% url 'home' %}#why">Why Keshmiri Rugs</a></div><div><h4>Contact Us</h4><p>WhatsApp: +98 912 869 2978</p><p>info@keshmirirugs.com</p></div></footer><button class="float" data-wa data-category="{{ category.name }}">☏</button><script src="{% static 'assets/script.js' %}"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{{ category.name }} | Keshmiri Rugs</title>
+    <link rel="stylesheet" href="{% static 'assets/style.css' %}">
+</head>
+<body>
+<div class="topline"><span>✦ Authentic Persian Rugs &nbsp; ✦ Handwoven Heritage &nbsp; ✦ Timeless Beauty</span><span>WhatsApp: +98 912 869 2978</span>
+</div>
+<header class="nav"><a class="logo" href="{% url 'home' %}">
+    <div class="mark"><span>K</span></div>
+    <div class="logo-text">Keshmiri<br>Rugs<small>AUTHENTIC PERSIAN COLLECTIONS</small></div>
+</a>
+    <nav class="menu"><a href="{% url 'home' %}">Home</a><a href="{% url 'categories' %}">Categories</a><a
+            href="{% url 'home' %}#why">Why Us</a><a href="{% url 'home' %}#contact">Contact</a></nav>
+    <button class="whatsapp-top" data-wa data-category="{{ category.name }}">WhatsApp</button>
+</header>
+<section class="page-hero">
+    <div class="page-hero-inner">
+        <div class="breadcrumb"><a href="{% url 'home' %}">Home</a> / <a href="{% url 'categories' %}">Categories</a>
+        </div>
+        <h1>{{ category.name }}</h1>
+        <p>{{ category.description }}</p></div>
+</section>
+<main class="cat-content">
+    <div class="cat-layout">
+        <div class="cat-photo">
+            {% if category.image %}
+            <img src="{{ category.image.url }}" alt="{{ category.name }}">
+            {% endif %}
+        </div>
+        <div>
+            <section class="story"><h2>About {{ category.name }}</h2>
+                <p>{{ category.description }}</p>
+                <div class="info-columns">
+                    <div class="mini"><h3>Design Character</h3>
+                        <ul>
+                            {% for feature in category.design_character_list %}
+                            <li>{{ feature }}</li>
+                            {% empty %}
+                            <li>Authentic Persian craftsmanship</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="mini"><h3>Why Choose It?</h3>
+                        <p style="line-height:1.8;color:#55483f">{{ category.why_choose|default:"A beautiful choice for
+                            collectors, interior designers and homeowners looking for authentic craftsmanship, visual
+                            warmth and cultural identity." }}</p></div>
+                </div>
+            </section>
+            <section class="cat-cta">
+                <div><h2>Interested in {{ category.name }}?</h2>
+                    <p>If you want to see more or purchase from this category, contact us on WhatsApp.</p></div>
+                <button class="btn green" data-wa data-category="{{ category.name }}">Contact on WhatsApp</button>
+            </section>
+        </div>
+    </div>
+</main>
+<footer class="footer" id="contact">
+    <div>
+        <div class="logo">
+            <div class="mark"><span>K</span></div>
+            <div class="logo-text">Keshmiri<br>Rugs<small>AUTHENTIC PERSIAN COLLECTIONS</small></div>
+        </div>
+        <p>Timeless. Authentic. Handwoven.</p></div>
+    <div><h4>Quick Links</h4><a href="{% url 'home' %}">Home</a><a href="{% url 'categories' %}">Categories</a><a
+            href="{% url 'home' %}#why">Why Keshmiri Rugs</a></div>
+    <div><h4>Contact Us</h4>
+        <p>WhatsApp: +98 912 869 2978</p>
+        <p>info@keshmirirugs.com</p></div>
+</footer>
+<button class="float" data-wa data-category="{{ category.name }}">☏</button>
+<script src="{% static 'assets/script.js' %}"></script>
+</body>
+</html>
