@@ -1,4 +1,6 @@
 from django.db import models
+from PIL import Image
+import os
 
 
 class Category(models.Model):
@@ -26,7 +28,6 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-
     @property
     def design_character_list(self):
         source = getattr(self, "design_character", "") or getattr(self, "features", "")
@@ -35,3 +36,17 @@ class Category(models.Model):
     @property
     def feature_list(self):
         return self.design_character_list
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        if self.image:
+            img_path = self.image.path
+
+            img = Image.open(img_path)
+            img = img.convert("RGB")
+
+            max_size = (1400, 1400)
+            img.thumbnail(max_size)
+
+            img.save(img_path, quality=75, optimize=True)
